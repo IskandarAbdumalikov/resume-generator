@@ -12,6 +12,7 @@ const Header = () => {
   const [showList, setShowList] = useState(false);
   const { data } = useGetAllUsersQuery({ search: searchValue });
   const isLogin = localStorage.getItem("x-auth-token");
+ 
 
   let handleCloser = () => {
     setSearchValue("");
@@ -33,17 +34,9 @@ const Header = () => {
           }
         >
           <ul className="header__nav__middle__list">
-      
-            {isLogin ? (
-              <NavLink to={"/admin/manage-product"}>ADMIN</NavLink>
-            ) : (
-              <NavLink to={"/login"}>LOGIN</NavLink>
-            )}
-
             <NavLink className="header__nav__list-contact" to={"/contact"}>
               CONTACTS
             </NavLink>
-           
           </ul>
           <div className="header__nav__middle__form">
             <button>
@@ -61,7 +54,15 @@ const Header = () => {
           </div> */}
         </div>
         <div className="header__nav__btns">
-          
+          {isLogin ? (
+            <NavLink to={"/admin"}>
+              <button>ADMIN</button>
+            </NavLink>
+          ) : (
+            <NavLink to={"/login"}>
+              <button>LOGIN</button>
+            </NavLink>
+          )}
           <div
             onClick={() => setShowList((p) => !p)}
             className="header__nav__bar"
