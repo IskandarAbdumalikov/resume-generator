@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const usersApi = createApi({
   reducerPath: "usersApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://market.ilyosbekdev.uz/",
+    baseUrl: "http://18.158.24.26:9050/v1/",
     prepareHeaders: (headers) => {
       const token = localStorage.getItem("x-auth-token");
       if (token) {
@@ -37,7 +37,7 @@ export const usersApi = createApi({
     }),
     updateUser: builder.mutation({
       query: ({ _id, body }) => ({
-        url: `/`,
+        url: `users/${_id}`,
         method: "PATCH",
         body,
       }),
@@ -45,10 +45,34 @@ export const usersApi = createApi({
     }),
     deleteUser: builder.mutation({
       query: (id) => ({
-        url: `/`,
+        url: `users/${id}`,
         method: "DELETE",
       }),
       invalidatesTags: ["User"],
+    }),
+    loginUser: builder.mutation({
+      query: (params) => ({
+        url: "auth/login",
+        method: "POST",
+        params,
+      }),
+      invalidatesTags: ["User"],
+    }),
+    registerUser: builder.mutation({
+      query: (body) => ({
+        url: "auth/register",
+        method: "POST",
+        body,
+      }),
+      providesTags: ["User"],
+    }),
+    verificationUser: builder.mutation({
+      query: (params) => ({
+        url: "auth/verification",
+        method: "POST",
+        params,
+      }),
+      providesTags: ["User"],
     }),
   }),
 });
@@ -59,4 +83,7 @@ export const {
   useCreateUserMutation,
   useUpdateUserMutation,
   useDeleteUserMutation,
+  useLoginUserMutation,
+  useRegisterUserMutation,
+  useVerificationUserMutation,
 } = usersApi;
