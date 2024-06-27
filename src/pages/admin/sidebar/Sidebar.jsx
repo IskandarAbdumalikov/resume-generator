@@ -24,13 +24,13 @@ const Sidebar = () => {
       </h2>
       <ul className="sidebar__collection">
         <li className="sidebar__item">
-          <NavLink className={"sidebar__link"} to={"create-product"}>
+          <NavLink className={"sidebar__link"} to={"create"}>
             <IoCreateOutline />
             <span>Create Resume</span>
           </NavLink>
         </li>
         <li className="sidebar__item">
-          <NavLink className={"sidebar__link"} to={"manage-product"}>
+          <NavLink className={"sidebar__link"} to={"manage"}>
             <AiOutlineProduct />
             <span>Manage Resume</span>
           </NavLink>

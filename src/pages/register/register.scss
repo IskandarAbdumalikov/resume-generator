@@ -1,0 +1,17 @@
+@import '../login/login.scss';
+
+.register {
+  .register__form {
+    h1 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      text-align: center;
+    }
+  }
+}
+
+.verification__form{
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}

@@ -2,6 +2,9 @@
   display: grid;
   grid-template-columns: 300px 1fr;
   transition: 0.3s;
+  background-image: linear-gradient(#e5e7eb 1px, #0000 0),
+    linear-gradient(90deg, #e5e7eb 1px, #0000 0);
+  background-size: 100px 100px;
   &__header {
     display: flex;
     padding: 20px;

@@ -11,7 +11,7 @@ const AdminHeader = ({ setClose }) => {
         <IoIosMenu />
       </button>
       <div>
-        <p>John doe</p>
+        <p>Resume</p>
       </div>
     </div>
   );

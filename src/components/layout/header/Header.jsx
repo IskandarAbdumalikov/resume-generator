@@ -4,7 +4,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 // import SearchModule from "./searchModule/SearchModule";
 import { useGetAllUsersQuery } from "../../../context/userSlice";
-import bar from '../../../assets/icons/bar.svg'
+import bar from "../../../assets/icons/bar.svg";
 
 const Header = () => {
   const { pathname } = useLocation();
@@ -12,7 +12,6 @@ const Header = () => {
   const [showList, setShowList] = useState(false);
   const { data } = useGetAllUsersQuery({ search: searchValue });
   const isLogin = localStorage.getItem("x-auth-token");
- 
 
   let handleCloser = () => {
     setSearchValue("");
@@ -55,7 +54,7 @@ const Header = () => {
         </div>
         <div className="header__nav__btns">
           {isLogin ? (
-            <NavLink to={"/admin"}>
+            <NavLink to={"/admin/create"}>
               <button>ADMIN</button>
             </NavLink>
           ) : (
@@ -63,6 +62,9 @@ const Header = () => {
               <button>LOGIN</button>
             </NavLink>
           )}
+          <NavLink to={"/register"}>
+            <button>Register</button>
+          </NavLink>
           <div
             onClick={() => setShowList((p) => !p)}
             className="header__nav__bar"
@@ -71,7 +73,7 @@ const Header = () => {
           </div>
         </div>
       </nav>
-      {showList || searchValue ? (
+      {showList ? (
         <div onClick={handleCloser} className="overlay"></div>
       ) : (
         <></>
